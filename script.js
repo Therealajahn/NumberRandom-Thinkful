@@ -3,11 +3,17 @@
 function getDogPhotos(){
     $('#button').on('click',()=>{
     let imageNumber = $('#number').val();
-   console.log(imageNumber); fetch(`https://dog.ceo/api/breeds/image/random/${imageNumber}`)
-        .then(response =>response.json())
-        .then(responseJSON => renderDogPhotos(responseJSON.message))
-        .catch(error => console.log(error));
-    })   
+    if(imageNumber > 1){    
+        fetch(`https://dog.ceo/api/breeds/image/random/${imageNumber}`)
+            .then(response =>response.json())
+            .then(responseJSON => renderDogPhotos(responseJSON.message))
+            .catch(error => console.log(error));
+        }else{
+         $('form').append('<h1>Enter a number</h1>')
+        }
+        
+    })
+    
 }
 //put images in a img tag with a for each
 function renderDogPhotos(dogPhotos) {
