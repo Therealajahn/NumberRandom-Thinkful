@@ -1,7 +1,8 @@
 
 //get dog photos on submit
 function getDogPhotos(){
-    $('#button').on('click',()=>{
+    $('form').on('submit',()=>{
+    event.preventDefault();
     let imageNumber = $('#number').val();
     if(imageNumber > 1){    
         fetch(`https://dog.ceo/api/breeds/image/random/${imageNumber}`)
